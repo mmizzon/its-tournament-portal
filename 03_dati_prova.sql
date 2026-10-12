@@ -1,4 +1,4 @@
--- =====================================================
+ -- =====================================================
 --  Dati di prova (facoltativo)
 --  Eseguire DOPO 02_schema.sql, con il database selezionato.
 --
