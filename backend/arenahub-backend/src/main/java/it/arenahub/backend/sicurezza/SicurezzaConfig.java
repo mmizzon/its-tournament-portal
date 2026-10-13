@@ -66,6 +66,10 @@ public class SicurezzaConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/auth/registrazione", "/api/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/tornei", "/api/tornei/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/tornei", "/api/tornei/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/tornei/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/tornei/**").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtConverter)))
