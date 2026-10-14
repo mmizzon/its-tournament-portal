@@ -21,7 +21,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'd86f9c1c-c619-11f1-9178-2800af4a2531:1-34';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'd86f9c1c-c619-11f1-9178-2800af4a2531:1-36';
 
 --
 -- Table structure for table `componente_squadra`
@@ -41,6 +41,21 @@ CREATE TABLE `componente_squadra` (
   CONSTRAINT `fk_componente_squadra` FOREIGN KEY (`id_squadra`) REFERENCES `squadra` (`id_squadra`) ON DELETE CASCADE,
   CONSTRAINT `fk_componente_utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id_utente`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `impostazione`
+--
+
+DROP TABLE IF EXISTS `impostazione`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `impostazione` (
+  `id_impostazione` int NOT NULL AUTO_INCREMENT,
+  `valore` int NOT NULL,
+  PRIMARY KEY (`id_impostazione`),
+  CONSTRAINT `chk_valore` CHECK ((`valore` > 0))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,4 +270,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-13 17:35:52
+-- Dump completed on 2026-10-14 14:36:08
